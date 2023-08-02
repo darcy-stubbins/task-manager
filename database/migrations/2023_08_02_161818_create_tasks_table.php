@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->string('title'); 
+            $table->text('content'); 
+            $table->unsignedInteger('delegator_id'); 
+            $table->unsignedInteger('delegate_id')->nullable();  
+            $table->date('deadline')->nullable(); 
+            $table->unsignedInteger('status_id'); 
             $table->timestamps();
         });
     }
