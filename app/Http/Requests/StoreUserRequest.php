@@ -2,11 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-
-class StoreUserRequest extends FormRequest
+class StoreUserRequest extends ApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,10 +36,6 @@ class StoreUserRequest extends FormRequest
             'password.required' => 'You need to input a password',
             'password.confirmed' => 'The two passwords don\'t match', 
         ];
-    }
-
-    protected function failedValidation(Validator $validator) { 
-        throw new HttpResponseException(response()->json($validator->errors(), 422)); 
     }
 }
 

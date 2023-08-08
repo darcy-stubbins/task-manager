@@ -17,33 +17,28 @@ class TaskController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $validated = $request->validated(); 
+        $task = Task::create([
+            'title'=>$validated['title'], 
+            'content'=>$validated['content'], 
+            'delegator_id'=>$validated['delegator_id'], 
+            'delegate_id'=>$validated['delegate_id'], 
+            'deadline'=>$validated['deadline'], 
+            'status_id'=>$validated['status_id'], 
+        ]);
+        return response()->json([
+            'task' => $task
+        ]); 
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Task $task)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Task $task)
     {
         //
     }
