@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStatusRequest;
 use App\Http\Requests\UpdateStatusRequest;
+use App\Http\Resources\StatusResource;
 use App\Models\Status;
 
 class StatusController extends Controller
@@ -35,7 +36,7 @@ class StatusController extends Controller
      */
     public function show(Status $status)
     {
-        //
+        return response()->json(new StatusResource($status)); 
     }
 
     /**
