@@ -17,33 +17,23 @@ class StatusController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreStatusRequest $request)
     {
-        //
+        $validated = $request->validated(); 
+        $status = Status::create([
+            'title'=>$validated['title'],
+        ]);
+        return response()->json([
+            'status' => $status
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Status $status)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Status $status)
     {
         //
     }

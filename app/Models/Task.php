@@ -17,4 +17,19 @@ class Task extends Model
         'deadline', 
         'status_id', 
     ]; 
+
+    public function delegate()
+    {
+        return $this->belongsTo(User::class, 'delegate_id'); 
+    }
+
+    public function delegator()
+    {
+        return $this->belongsTo(User::class, 'delegator_id'); 
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class); 
+    }
 }

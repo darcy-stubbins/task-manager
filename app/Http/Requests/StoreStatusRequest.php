@@ -9,7 +9,7 @@ class StoreStatusRequest extends ApiRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,7 +20,14 @@ class StoreStatusRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            //
+            'title'=>'required|max:255', 
+        ];
+    }
+
+    public function messages(): array {
+        return [
+            'title.required' => 'you need a title',
+            'title.max' => 'the title is too long.'
         ];
     }
 }

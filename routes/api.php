@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
@@ -25,6 +26,8 @@ Route::group(['middleware' => 'auth:sanctum'], function (Router $authenticatedRo
     $authenticatedRoute->apiResource('task', TaskController::class); 
 
     $authenticatedRoute->post('/logout', [AuthController::class, 'logout']);
+
+    $authenticatedRoute->apiResource('status', StatusController::class); 
 });
 
 Route::post('/login', [AuthController::class, 'login']);
