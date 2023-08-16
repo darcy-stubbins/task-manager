@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
@@ -28,6 +29,8 @@ Route::group(['middleware' => 'auth:sanctum'], function (Router $authenticatedRo
     $authenticatedRoute->post('/logout', [AuthController::class, 'logout']);
 
     $authenticatedRoute->apiResource('status', StatusController::class); 
+
+    $authenticatedRoute->apiResource('comment', CommentController::class); 
 });
 
 Route::post('/login', [AuthController::class, 'login']);

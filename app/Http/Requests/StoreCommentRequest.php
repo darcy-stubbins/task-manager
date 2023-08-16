@@ -9,7 +9,7 @@ class StoreCommentRequest extends ApiRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,7 +20,16 @@ class StoreCommentRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            //
+            'task_id'=>'required|exists:tasks,id', 
+            'content'=>'required', 
+        ];
+    }
+
+    public function messages(): array {
+        return [
+            'task_id.required' => 'you need a task to comment',
+            'task_id.exists' => 'this task doesn\'t exist', 
+            'content.required' => 'you need a comment', 
         ];
     }
 }
